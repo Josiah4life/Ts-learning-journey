@@ -1,0 +1,22 @@
+{
+  "name": "ts-essential",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "do-something": "tsx src/doSomething.ts",
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.4",
+    "typescript": "~5.8.3",
+    "vite": "^5.4.19",
+    "vite-plugin-checker": "^0.9.3"
+  },
+  "dependencies": {
+    "@total-typescript/helpers": "^0.0.1",
+    "vitest": "^3.1.3"
+  }
+}
