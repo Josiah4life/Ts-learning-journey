@@ -52,3 +52,29 @@ goToLocation([10, 20]);
 goToLocation([10, "20"]); // Error: "20" is a string, but longitude expects a number
 
 goToLocation([10, 20, 30]); // Valid, as elevation is optional
+
+// as const to make function infer a tuple function
+
+const fetchData = async () => {
+  const result = await fetch("/");
+
+  if (!result.ok) {
+    return [new Error("Could not fetch data")] as const;
+  }
+
+  const data = (await result.json()) as any;
+  return [undefined, data] as const;
+};
+
+const example = async () => {
+  const [error, data] = await fetchData();
+
+  type Tests = [
+    Expect<Equal<typeof error, Error | undefined>>,
+    Expect<Equal<typeof data, any>>
+  ];
+};
+
+// To solve the above we need to [Error, undeefined] |  [undefined, data] OR
+// We return a promise --> const fetchData = async (): Promise<[Error | undefined, any?]> => { OR
+// return [new Error("Could not fetch data")] as const. also [undefined, data] as const.

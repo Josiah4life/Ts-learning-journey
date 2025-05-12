@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@total-typescript/helpers": "^0.0.1",
+    "@total-typescript/ts-reset": "^0.6.1",
     "vitest": "^3.1.3"
   }
 }

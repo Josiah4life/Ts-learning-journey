@@ -15,3 +15,6 @@ myFunction();
 import { hiThere } from "./dummy-import";
 
 hiThere();
+
+// As well as on types
+type Example = PropertyKey;
