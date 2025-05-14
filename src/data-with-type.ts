@@ -12,7 +12,7 @@ interface NameAndEmail {
 
 const fetchUser = async (): Promise<NameAndEmail> => {
   const response = await fetch("/api/user");
-  const user = await response.json();
+  const user = (await response.json()) as NameAndEmail;
   return user;
 };
 
@@ -33,7 +33,7 @@ interface User1 {
 
 const fetchUser1 = async (): Promise<Pick<User1, "name" | "email">> => {
   const response = await fetch("/api/user");
-  const user = await response.json();
+  const user = (await response.json()) as NameAndEmail;
   return user;
 };
 
@@ -52,30 +52,27 @@ interface Product {
   description: string;
 }
 
-const addProduct = (productInfo: Omit<Product, "id">) {
+const addProduct = (productInfo: Omit<Product, "id">) => {
   //Do something with the productInfo
-}
+};
 
-type ProductWithoutId = Omit<Product, "id">
+type ProductWithoutId = Omit<Product, "id">;
 
 addProduct({
   name: "Book",
   price: 12.99,
-  description: "A book about Dragons"
-})
-
+  description: "A book about Dragons",
+});
 
 addProduct({
   // @ts-expect-error
   id: 1,
   name: "Book",
   price: 12.99,
-  description: "A book about Dragons"
-})
-
+  description: "A book about Dragons",
+});
 
 //Partial Utility Type
-
 interface Product {
   id: number;
   name: string;
@@ -83,27 +80,26 @@ interface Product {
   description: string;
 }
 
-type PartialProduct = Partial<Product>
+type PartialProduct = Partial<Product>;
 
-const updateProduct = (id: number, productInfo: Partial<Omit<Product, "id">>) => {
+const updateProduct = (
+  id: number,
+  productInfo: Partial<Omit<Product, "id">>
+) => {
   //Do something with the productInfo
-}
+};
 
-// Should be able to update individual pieces of info 
+// Should be able to update individual pieces of info
 
 updateProduct(1, {
   name: "Book",
-})
+});
 
-updateProduct(
-  1, {
-    price: 12.99
-  }
-)
+updateProduct(1, {
+  price: 12.99,
+});
 
-updateProduct(
-  1, {
-    price: 21,
-    description: "Jolly item"
-  }
-)
+updateProduct(1, {
+  price: 21,
+  description: "Jolly item",
+});

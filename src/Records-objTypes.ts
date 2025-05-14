@@ -39,7 +39,7 @@ type Configurations1 = {
 
 const configurations1: Configurations1 = {
   development: {
-    apiBaseUrl: "development"
+    apiBaseUrl: "development",
     timeout: 5000,
   },
   production: {
