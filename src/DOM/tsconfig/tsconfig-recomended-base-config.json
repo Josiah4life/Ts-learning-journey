@@ -1,0 +1,74 @@
+{
+  "compilerOptions": {
+    /* Base Options */
+    "skipLibCheck": true,
+    "target": "ES2020", //Js version
+    "esModuleInterop": true, // Makes working with import CommonJS easier
+    // Example: import express from 'express' instead of import * as express from 'express'
+
+    "allowJs": true, // Lets you import .js files
+    "resolveJsonModule": true, //Let you import .json files
+    "moduleDetection": "force", //Forces every file to be treated as a module (with its own scope), even without imports/exports.
+    "isolatedModules": true, // Ensures each file can be safely transpiled independently (important for tsc --build, Babel, etc.)
+    "verbatimModuleSyntax": true, // Keeps import/export syntax untouched when emitting — especially useful with bundlers (like Vite or esbuild).
+
+    /* Strictness */
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true, //Forces use of the override keyword when overriding class methods — prevents silent bugs.
+
+    /* If transpiling with Typescipt: */
+    "module": "NodeNext", // Uses modern ESM + Node’s resolution.
+    // Use "CommonJS" if you're targeting older Node setups.
+    "moduleResolution": "nodenext",
+
+    "outDir": "dist", //Where compiled .js files go.
+    "rootDir": "", //Specify the root folder within your source files.
+    "sourceMap": true, // Generates .map files for easier debugging.
+
+    /* AND if you're building for a libray: */
+    "declaration": true, //Generates .d.ts files for consumers of your library.
+
+    /* AND if you're building for a library in a monorepo */
+    "composite": true,
+    "declarationMap": true, //Allows jumping to source when importing your library.
+
+    /*If NOT transpiling with TypeScript: */
+    // "module" "Preserve"
+    // "noEmit": true
+
+    /*For when another bundler is handling module resolution */
+    // "module": "ESNext",
+    // "moduleResolution": "bundler",
+
+    /* If your code runs in the DOM: */
+    "lib": ["DOM", "DOM.Iterable", "ES2022"],
+
+    /* If your code doesn't run in the DOM */
+    // "lib": ["es2022"]
+
+    "jsx": "react-jsx", // Allow Typescript to support Jsx.
+
+    //END ^
+
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+
+    "useDefineForClassFields": true,
+
+    /* Bundler mode */
+    // For when another bundler is handling module resolution
+    // "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+
+    "noEmit": true,
+
+    /* Linting */
+
+    // "noIm"
+    // "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true
+  },
+  "include": ["src"]
+}
